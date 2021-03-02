@@ -14,5 +14,8 @@ j = 0
 for i in range(12, 12+len(new_columns)):
     data.insert(i, column  = new_columns[j], value = 0)
     j = j + 1
- 
-print(data.at[0, 'HomeTeam'])
+
+data = data.dropna() # Drop rows that contain missing values
+
+
+
