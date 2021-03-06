@@ -1,4 +1,21 @@
 import pandas as pd
+from pandas.core.frame import DataFrame
+
+def add_points(data: DataFrame):
+
+    """
+    Method that add's points to home and away teams in given dataframe based on full time result.
+
+    """
+
+    for i in range(len(data)):
+        if data.iloc[i]['FTR'] == 'H':
+            data.at[i, 'HomePoints'] = 3
+        elif data.iloc[i]['FTR'] == 'A':
+            data.at[i, 'AwayPoints'] = 3
+        else:
+            data.at[i, 'HomePoints'] = 1
+            data.at[i, 'AwayPoints'] = 1
 
 with open('data/I1_15_16.csv', encoding='utf-8') as f:
     data = pd.read_csv(f, header=0)
@@ -13,9 +30,12 @@ new_columns = ['HomePoints', 'AwayPoints', 'HGL5/90', 'AGL5/90', 'HSL5/90', 'ASL
 j = 0
 for i in range(12, 12+len(new_columns)):
     data.insert(i, column  = new_columns[j], value = 0)
-    j = j + 1
+    j += 1
 
-data = data.dropna() # Drop rows that contain missing values
+data = data.dropna() # Drop all rows that contain missing values
+
+add_points(data)     # Add point values to point columns
+print(data.head())
 
 
 
