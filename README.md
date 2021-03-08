@@ -20,7 +20,8 @@ First step is to preprocess the data so that it could be consumed by various ML 
 - FTAG as *full time goals for away team*
 - FTR as *full time result of match*
 
-From this basic data is possible to calculate new features which will be used in the machine learning part. The goal is to use 5 game rolling averages of stats about points won percentage, winning percentage, shots, shots on target and corners for each team participating in a match. Also full season points percentage and win percentage will be taken into account. For predicting total number of goals scored in a match totals of shots, shots on target, corners and goals will be counted. The list of features that are created from original data are as below:
+From this basic data is possible to calculate new features which will be used in the machine learning part. The goal is to use 5 game rolling averages of stats about points won percentage, winning percentage, shots, shots on target and corners for each team participating in a match. Also full season points percentage and win percentage will be taken into account. 
+
 - HomePoints 
 - AwayPoints
 - HGL5/90
@@ -48,6 +49,3 @@ From this basic data is possible to calculate new features which will be used in
 - HWL5%
 - AWL5%
 - GTot
-- STot
-- SOTTot
-- CTot

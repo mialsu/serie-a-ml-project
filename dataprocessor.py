@@ -59,11 +59,8 @@ with open('data/I1_15_16.csv', encoding='utf-8') as f:
 data = correct_columns(data)    # Manipulate raw data frame to contain all columns desired
 add_points(data)                # Add point values to point columns
 
-# Count totals in goals, shots, shots on target and corners for each match
+# Count totals match goals for each match
 for i in range(len(data)):
-    data.at[i, 'STot'] = data.at[i, 'HS'] + data.at[i, 'AS']
-    data.at[i, 'SOTTot'] = data.at[i, 'HST'] + data.at[i, 'AST']
-    data.at[i, 'CTot'] = data.at[i, 'HC'] + data.at[i, 'AC']
     data.at[i, 'GTot'] = data.at[i, 'FTHG'] + data.at[i, 'FTAG']
 
 
