@@ -6,7 +6,7 @@ This project is about utilizing machine learning to predict scores and total goa
 
 ## Data preprocessing
 
-First step is to preprocess the data so that it could be comsumed by various ML algorithms. From the original dataset, columns used are listed below:
+First step is to preprocess the data so that it could be consumed by various ML algorithms. From the original dataset, columns used are listed below:
 - Date
 - HomeTeam
 - AwayTeam
