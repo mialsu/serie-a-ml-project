@@ -51,6 +51,7 @@ def add_points(data: DataFrame):
             data.at[i, 'HomePoints'] = 1
             data.at[i, 'AwayPoints'] = 1
 
+# Open csv-file to dataframe
 with open('data/I1_15_16.csv', encoding='utf-8') as f:
     data = pd.read_csv(f, header=0)
     f.close()
