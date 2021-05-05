@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pandas.core.frame import DataFrame
+import csv
 
 def correct_columns(df: DataFrame):
     """
@@ -62,6 +63,26 @@ add_points(df)              # Add point values to point columns
 # Count total match goals for each match
 for i in range(len(df)):
     df.at[i, 'GTot'] = df.at[i, 'FTHG'] + df.at[i, 'FTAG']
+
+# Count rolling means for new statistics (except win% and point%)
+df['HGL5/90'] = df.groupby('HomeTeam')['FTHG'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['AGL5/90'] = df.groupby('AwayTeam')['FTAG'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HGCL5/90'] = df.groupby('HomeTeam')['FTAG'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['AGCL5/90'] = df.groupby('AwayTeam')['FTHG'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HSL5/90'] = df.groupby('HomeTeam')['HS'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ASL5/90'] = df.groupby('AwayTeam')['AS'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HSCL5/90'] = df.groupby('HomeTeam')['AS'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ASCL5/90'] = df.groupby('AwayTeam')['HS'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HSTL5/90'] = df.groupby('HomeTeam')['HST'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ASTL5/90'] = df.groupby('AwayTeam')['AST'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HSTCL5/90'] = df.groupby('HomeTeam')['AST'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ASTCL5/90'] = df.groupby('AwayTeam')['HST'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HCL5/90'] = df.groupby('HomeTeam')['HC'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ACL5/90'] = df.groupby('AwayTeam')['AC'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['HCCL5/90'] = df.groupby('HomeTeam')['AC'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+df['ACCL5/90'] = df.groupby('AwayTeam')['HC'].rolling(window=5).mean().reset_index(level = 0 , drop = True)
+
+print(df.tail())
 
 
 
