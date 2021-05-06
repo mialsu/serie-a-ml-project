@@ -7,7 +7,6 @@ This project is about utilizing machine learning to predict scores and total goa
 ## Data preprocessing
 
 First step is to preprocess the data so that it could be consumed by various ML algorithms. From the original dataset, columns used are listed below:
-- Date
 - HomeTeam
 - AwayTeam
 - HS as *total shots taken by home team*
@@ -22,14 +21,13 @@ First step is to preprocess the data so that it could be consumed by various ML 
 
 From this basic data is possible to calculate new features which will be used in the machine learning part. The goal is to use 5 game rolling averages of stats about points won percentage, winning percentage, shots, shots on target and corners for each team participating in a match. Also full season points percentage and win percentage will be taken into account. 
 
-- HomePoints 
-- AwayPoints
-- HGL5/90
-- AGL5/90
-- HGCL5/90 
-- AGCL5/90
-- HSL5/90 
-- ASL5/90
+- O2.5 as *1.0 if total of over 2.5 goals weew scored in a match, 0.0 if not*
+- HGL5/90 as *goals scored by home team in last 5 home matches*
+- AGL5/90 as *goals scored by away team in last 5 away matches*
+- HGCL5/90 as *goals conceded by home team in last 5 home matches*
+- AGCL5/90 as *goals conceded by away team in last 5 away matches*
+- HSL5/90 as *shots taken by home team in last 5 home matches*
+- ASL5/90 as *shots taken by away team in last 5 away matches*
 - HSCL5/90
 - ASCL5/90
 - HSTL5/90
@@ -48,4 +46,10 @@ From this basic data is possible to calculate new features which will be used in
 - APL5%
 - HWL5%
 - AWL5%
-- GTot
+
+To count point and win percentages for each team of a given match, few columns will be created based on FTR for help. These columns are:
+
+- HomePoint%
+- AwayPoint%
+- HomeWin%
+- AwayWin%
